@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  php-apache-environment:
+    container_name: php
+    build: .
+    volumes:
+      - ./app:/var/www/html/
+    ports:
+      - 8000:80
+
+  db:
+    container_name: mariadb
+    image: mariadb
+    restart: always
+    environment:
+        MARIADB_ROOT_PASSWORD: toor
+        MARIADB_DATABASE: ejemplo
+        MARIADB_USER: usuario
+        MARIADB_PASSWORD: usuario
+    ports:
+        - "3307:3306"
+
